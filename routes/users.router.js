@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   res.status(200).json({
     limit,
     offset,
-    message: 'APi V2 - limit - offset',
+    message: 'API V1 - limit - offset',
   });
 });
 
