@@ -1,6 +1,7 @@
 function logErrors(err, req, res, next) {
+  // sistemas de tranking como Sentry
   console.log("1er manejo del error");
-  console.error(err.stack);
+  console.error(err);
   next(err);
 }
 
