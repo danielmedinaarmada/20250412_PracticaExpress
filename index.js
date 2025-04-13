@@ -16,7 +16,7 @@ app.use(express.json());
 const whiteList = [
   'http://localhost:3000',
   'http://localhost:8080',
-  'http://127.0.0.1:5500',
+  //'http://127.0.0.1:5500', // como capturar el error con boom
   'https://myapp.com',
 ];
 
@@ -26,7 +26,7 @@ const corsOptions = {
       console.log("origin", origin);
       callback(null, true);
     } else {
-      callback(new Error(boom.cors("Not allowed by CORS")))
+      callback(new Error('Not allowed by CORS'));
     }
 
   },
