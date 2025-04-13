@@ -1,6 +1,6 @@
 function logErrors(err, req, res, next) {
   console.log("1er manejo del error");
-  console.log(err.stack);
+  console.error(err.stack);
   next(err);
 }
 

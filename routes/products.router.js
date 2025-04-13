@@ -1,6 +1,6 @@
 import express from 'express';
 import ProductsServices from '../services/products.services.js';
-import validatorHandler from '../middlewares/validator.Handler.js';
+import validatorHandler from '../middlewares/validator.handler.js';
 import {
   createProductSchema,
   updateProductSchema,
@@ -45,7 +45,7 @@ router.post(
       const data = req.body;
       const product = await service.create(data);
       res.status(201).json({
-        product,
+        data: product,
         message: 'created products',
       });
     } catch (error) {

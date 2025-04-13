@@ -4,7 +4,7 @@ import {
   logErrors,
   errorHandler,
   boomErrorHandler,
-} from './middlewares/errors.js';
+} from './middlewares/errors.handler.js';
 import cors from 'cors';
 import boom from '@hapi/boom';
 
