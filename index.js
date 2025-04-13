@@ -1,11 +1,38 @@
 import express from 'express';
 import routerApi from './routes/index.js';
-import { logErrors, errorHandler, boomErrorHandler } from './middlewares/errors.js';
+import {
+  logErrors,
+  errorHandler,
+  boomErrorHandler,
+} from './middlewares/errors.js';
+import cors from 'cors';
+import boom from '@hapi/boom';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
+
+const whiteList = [
+  'http://localhost:3000',
+  'http://localhost:8080',
+  'http://127.0.0.1:5500',
+  'https://myapp.com',
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if(whiteList.includes(origin) || !origin) {
+      console.log("origin", origin);
+      callback(null, true);
+    } else {
+      callback(new Error(boom.cors("Not allowed by CORS")))
+    }
+
+  },
+};
+
+app.use(cors(corsOptions));
 
 routerApi(app);
 
